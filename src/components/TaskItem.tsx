@@ -6,7 +6,7 @@ interface Props {
 }
 
 const TaskItem = ({ task }: Props) => {
-  const { deleteTask } = useTasks();
+  const { deleteTask, updateTask } = useTasks();
   return (
     <div
       key={task._id}
@@ -17,7 +17,15 @@ const TaskItem = ({ task }: Props) => {
         <p>{task.description}</p>
       </div>
       <div className="flex gap-x-2">
-        <button>update</button>
+        <button
+          onClick={() => {
+            updateTask(task._id, {
+              done: !task.done,
+            });
+          }}
+        >
+          {task.done ? "undone" : "done"}
+        </button>
         <button
           onClick={async () => {
             if (!window.confirm("are you sure you want to delete this??"))
