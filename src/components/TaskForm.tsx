@@ -1,5 +1,4 @@
 import { ChangeEvent, FormEvent, useState } from "react";
-import { createTaskRequest } from "../api/tasks";
 import { useTasks } from "../context/useTasks";
 
 const TaskForm = () => {
@@ -48,7 +47,7 @@ const TaskForm = () => {
           <input
             type="checkbox"
             className="h-5 w-5 text-indigo-600"
-            onChange={(e) => {
+            onChange={() => {
               setTask({ ...task, done: !task.done });
             }}
           />
